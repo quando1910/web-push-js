@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+/**
+ * This is readonly file
+ */
+const cmdAlias = 'naf';
+const inquirer = require('inquirer');
+const fs = require('fs');
+const fsExtra = require('fs-extra');
+const shell = require('shelljs');
+const chalk = require('chalk');
+const path = require('path');
+const projectInitDir = path.dirname(__dirname);
+const projectDir = process.cwd();
+
+const serviceWorker = 'wp-worker.js';
+const pathToSW = `${projectInitDir}/${serviceWorker}`;
+
+
+/**
+ * Step for initing project
+ * @steps
+ * 1. Require enter Project name
+ * 2. Enter Database name
+ */
+const PROJECT_INIT_STEPS = [
+  {
+    name: 'framework',
+    type: 'list',
+    message: 'Which framework you are using:',
+    choices: [
+      {
+        name: '1. Angular',
+        value: 1
+      },
+      {
+        name: '2. Vue',
+        value: 2
+      },
+      {
+        name: '3. Reactjs',
+        value: 3
+      },
+      {
+        name: '4. Pure JS',
+        value: 4
+      }
+    ],
+    validate: function (input) {
+      if (input) {
+        return true;
+      } else {
+        return 'Framework is required!';
+      }
+    }
+  }
+]
+
+const run = async () => {
+  await inquirer.prompt(PROJECT_INIT_STEPS).then(async(answers) => {
+    const framework = answers['framework'];
+    if( framework === 1 ) {
+    
+    } else if (framework === 2) {
+      const vueSWPath = `${projectDir}/public/`;
+      console.log(`Read ${serviceWorker}!`);
+      contents = fs.readFileSync(`${pathToSW}`, 'utf8');
+      console.log(`Write ${serviceWorker} in Public folder of Vue!`);
+      // // create a new file with contents
+      fs.writeFileSync(`${vueSWPath}${serviceWorker}`, contents, 'utf8');
+
+    } else if (framework === 3) {
+
+    } else if (framework === 4) {
+    }
+       
+  });
+};
+
+
+run();
