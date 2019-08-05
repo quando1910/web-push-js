@@ -71,6 +71,12 @@ webPush.requestNotiPermission();
 - Check your `dist` folder. Try to run it with `http-server` or install plugin [`web server for chrome`](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?utm_source=chrome-ntp-launcher)
 
 
+### Server Push Notifications
+- Check out our server in: `https://web-push-js-server.herokuapp.com/`.
+
+- Now we can push notifcations with `title`, `body` and `icon`.
+- Let have your experiences!
+
 ## Licence
 
 > Usage is under provisioned of @AsianTechInc
